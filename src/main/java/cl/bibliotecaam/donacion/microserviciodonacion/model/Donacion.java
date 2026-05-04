@@ -27,6 +27,10 @@ public class Donacion {
     @Column(nullable = true,length = 30, unique = false)
     private String apmaterno_dona;
 
+    @ManyToOne
+    @JoinColumn(name = "id_emp", nullable = true)
+    private Empleado empleado;
+
 
 
 
