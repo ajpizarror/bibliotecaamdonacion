@@ -18,4 +18,5 @@ public class DonacionResponseDTO {
     private String appaterno_dona;
     private String apmaterno_dona;
 
+    private Integer numrun_emp;
 }

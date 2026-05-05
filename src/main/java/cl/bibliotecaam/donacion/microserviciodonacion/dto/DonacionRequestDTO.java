@@ -23,6 +23,7 @@ public class DonacionRequestDTO {
     @NotBlank(message = "El apellido materno es obligatorio.")
     private String apmaterno_dona;
 
+    @NotNull(message = "La donacion tuvo que ser supervisada por un empleado.")
     private Long id_emp;
 
 }

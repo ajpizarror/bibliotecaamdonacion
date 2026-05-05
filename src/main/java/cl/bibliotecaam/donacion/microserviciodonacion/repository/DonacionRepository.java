@@ -8,7 +8,9 @@ import java.util.List;
 public interface DonacionRepository extends JpaRepository<Donacion, Long> {
 
     List<Donacion> findByNumrun_dona(Long numrun);
+
     List<Donacion> findByPnombre_dona(String pnombre);
+
     List<Donacion> findbyAppaterno_dona(String appaterno);
 
 }
