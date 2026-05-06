@@ -17,7 +17,7 @@ public class Donacion {
     @Column(nullable = false, length = 8, unique = true)
     private Long numrun_dona;
     @Column(nullable = false,length = 1, unique = false)
-    private String dv_run;
+    private String dvrun_dona;
     @Column(nullable = false,length = 30, unique = false)
     private String pnombre_dona;
     @Column(nullable = true,length = 30, unique = false)

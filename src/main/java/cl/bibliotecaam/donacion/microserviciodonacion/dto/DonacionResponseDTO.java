@@ -12,7 +12,7 @@ public class DonacionResponseDTO {
 
     private Long id_dona;
     private Long numrun_dona;
-    private String dv_run;
+    private String dvrun_dona;
     private String pnombre_dona;
     private String snombre_dona;
     private String appaterno_dona;

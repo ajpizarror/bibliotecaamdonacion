@@ -24,7 +24,7 @@ public class DonacionService {
         return new DonacionResponseDTO(
                 donacion.getId_dona(),
                 donacion.getNumrun_dona(),
-                donacion.getDv_run(),
+                donacion.getDvrun_dona(),
                 donacion.getPnombre_dona(),
                 donacion.getSnombre_dona(),
                 donacion.getAppaterno_dona(),
@@ -50,7 +50,7 @@ public class DonacionService {
         Donacion donacion = new Donacion(
                 null,
                 dto.getNumrun_dona(),
-                dto.getDv_run(),
+                dto.getDvrun_dona(),
                 dto.getPnombre_dona(),
                 dto.getSnombre_dona(),
                 dto.getAppaterno_dona(),
@@ -68,7 +68,7 @@ public class DonacionService {
                     .orElseThrow(()-> new RuntimeException(
                             "Categoría no encontrada con id: " + dto.getId_emp()));
             existente.setNumrun_dona(dto.getNumrun_dona());
-            existente.setDv_run(dto.getDv_run());
+            existente.setDvrun_dona(dto.getDvrun_dona());
             existente.setPnombre_dona(dto.getPnombre_dona());
             existente.setSnombre_dona(dto.getSnombre_dona());
             existente.setAppaterno_dona(dto.getAppaterno_dona());
@@ -99,7 +99,7 @@ public class DonacionService {
     }
 
     public List<DonacionResponseDTO> obtenerPorAppaterno(String apellido){
-        return donacionRepository.findbyAppaterno_dona(apellido)
+        return donacionRepository.findByAppaterno_dona(apellido)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
