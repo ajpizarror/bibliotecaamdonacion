@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DonacionResponseDTO {
 
-    private Long idDona;
-    private Long numrunDona;
-    private String dvrunDona;
-    private String pnombreDona;
-    private String snombreDona;
-    private String appaternoDona;
-    private String apmaternoDona;
+    private Long id;
+    private Long numrun;
+    private String dv_run;
+    private String pnombre;
+    private String snombre;
+    private String appaterno;
+    private String apmaterno;
 
-    private Long numrunEmp;
+    private Long numrunemp;
 }

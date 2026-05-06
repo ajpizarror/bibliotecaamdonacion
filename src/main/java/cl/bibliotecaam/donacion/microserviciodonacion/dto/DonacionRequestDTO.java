@@ -12,18 +12,19 @@ import lombok.NoArgsConstructor;
 public class DonacionRequestDTO {
 
     @NotNull(message = "El run es obligatorio.")
-    private Long numrunDona;
+    private Long numrun;
     @NotBlank(message = "El DV es obligatorio.")
-    private String dvrunDona;
+    private String dv_run;
     @NotBlank(message = "El primer nombre es obligatorio.")
-    private String pnombreDona;
-    private String snombreDona;
+    private String pnombre;
+
+    private String snombre;
     @NotBlank(message = "El apellido paterno es obligatorio.")
-    private String appaternoDona;
+    private String appaterno;
     @NotBlank(message = "El apellido materno es obligatorio.")
-    private String apmaternoDona;
+    private String apmaterno;
 
     @NotNull(message = "La donacion tuvo que ser supervisada por un empleado.")
-    private Long idEmp;
+    private Long id;
 
 }

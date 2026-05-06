@@ -13,19 +13,19 @@ import lombok.NoArgsConstructor;
 public class Donacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idDona;
+    private Long id;
     @Column(nullable = false, length = 8, unique = true)
-    private Long numrunDona;
+    private Long numrun;
     @Column(nullable = false,length = 1, unique = false)
-    private String dvrunDona;
+    private String dv_run;
     @Column(nullable = false,length = 30, unique = false)
-    private String pnombreDona;
+    private String pnombre;
     @Column(nullable = true,length = 30, unique = false)
-    private String snombreDona;
+    private String snombre;
     @Column(nullable = false,length = 30, unique = false)
-    private String appaternoDona;
+    private String appaterno;
     @Column(nullable = true,length = 30, unique = false)
-    private String apmaternoDona;
+    private String apmaterno;
 
     @ManyToOne
     @JoinColumn(name = "id_emp", nullable = true)

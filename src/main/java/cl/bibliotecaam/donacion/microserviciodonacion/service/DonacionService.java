@@ -22,14 +22,14 @@ public class DonacionService {
 
     private DonacionResponseDTO mapToDTO(Donacion donacion){
         return new DonacionResponseDTO(
-                donacion.getIdDona(),
-                donacion.getNumrunDona(),
-                donacion.getDvrunDona(),
-                donacion.getPnombreDona(),
-                donacion.getSnombreDona(),
-                donacion.getAppaternoDona(),
-                donacion.getApmaternoDona(),
-                donacion.getEmpleado().getNumrunEmp()
+                donacion.getId(),
+                donacion.getNumrun(),
+                donacion.getDv_run(),
+                donacion.getPnombre(),
+                donacion.getSnombre(),
+                donacion.getAppaterno(),
+                donacion.getApmaterno(),
+                donacion.getEmpleado().getNumrun()
         );
     }
 
@@ -45,16 +45,16 @@ public class DonacionService {
 
     public DonacionResponseDTO guardar(DonacionRequestDTO dto){
         Empleado empleado = empleadoRepository
-                .findById(dto.getIdEmp())
-                .orElseThrow(() -> new RuntimeException("Empleado no encontrado con el id: " + dto.getIdEmp()));
+                .findById(dto.getId())
+                .orElseThrow(() -> new RuntimeException("Empleado no encontrado con el id: " + dto.getId()));
         Donacion donacion = new Donacion(
                 null,
-                dto.getNumrunDona(),
-                dto.getDvrunDona(),
-                dto.getPnombreDona(),
-                dto.getSnombreDona(),
-                dto.getAppaternoDona(),
-                dto.getApmaternoDona(),
+                dto.getNumrun(),
+                dto.getDv_run(),
+                dto.getPnombre(),
+                dto.getSnombre(),
+                dto.getAppaterno(),
+                dto.getApmaterno(),
                 empleado
         );
         return mapToDTO(donacionRepository.save(donacion));
@@ -64,15 +64,15 @@ public class DonacionService {
         return donacionRepository.findById(id).map( existente ->
         {
             Empleado empleado = empleadoRepository
-                    .findById(dto.getIdEmp())
+                    .findById(dto.getId())
                     .orElseThrow(()-> new RuntimeException(
-                            "Categoría no encontrada con id: " + dto.getIdEmp()));
-            existente.setNumrunDona(dto.getNumrunDona());
-            existente.setDvrunDona(dto.getDvrunDona());
-            existente.setPnombreDona(dto.getPnombreDona());
-            existente.setSnombreDona(dto.getSnombreDona());
-            existente.setAppaternoDona(dto.getAppaternoDona());
-            existente.setApmaternoDona(dto.getApmaternoDona());
+                            "Categoría no encontrada con id: " + dto.getId()));
+            existente.setNumrun(dto.getNumrun());
+            existente.setDv_run(dto.getDv_run());
+            existente.setPnombre(dto.getPnombre());
+            existente.setSnombre(dto.getSnombre());
+            existente.setAppaterno(dto.getAppaterno());
+            existente.setApmaterno(dto.getApmaterno());
             existente.setEmpleado(empleado);
 
 
@@ -85,21 +85,21 @@ public class DonacionService {
     }
 
     public List<DonacionResponseDTO> obtenerPorNumrun(Long numrun){
-        return donacionRepository.findByNumrunDona(numrun)
+        return donacionRepository.findByNumrun(numrun)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
 
     public List<DonacionResponseDTO> obtenerPorPnombre(String nombre){
-        return donacionRepository.findByPnombreDona(nombre)
+        return donacionRepository.findByPnombre(nombre)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
 
     public List<DonacionResponseDTO> obtenerPorAppaterno(String apellido){
-        return donacionRepository.findByAppaternoDona(apellido)
+        return donacionRepository.findByAppaterno(apellido)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
