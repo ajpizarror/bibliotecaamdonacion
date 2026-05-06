@@ -20,7 +20,7 @@ public class Empleado {
     private Long id_emp;
 
     @Column(nullable = false,precision = 8)
-    private Integer numrun_emp;
+    private Long numrun_emp;
 
     @Column(nullable = false, length = 1)
     private String dvrun_emp;
@@ -40,7 +40,7 @@ public class Empleado {
     @Column(nullable = false)
     private LocalDate fec_contrato;
 
-    @Column(nullable = true, precision = 7)
-    private Integer sueldo;
+    @Column(nullable = false, precision = 7)
+    private Long sueldo;
 
 }
