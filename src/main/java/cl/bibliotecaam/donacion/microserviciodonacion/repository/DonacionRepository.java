@@ -8,13 +8,13 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface DonacionRepository extends JpaRepository<Donacion, Long> {
-    @Query("SELECT d FROM Donacion d WHERE d.numrun_dona = :numrun")
+    @Query("SELECT d FROM Donacion d WHERE d.numrun = :numrun")
     List<Donacion> findByNumrun(@Param("numrun") Long numrun);
 
-    @Query("SELECT d FROM Donacion d WHERE d.pnombre_dona = :nombre")
+    @Query("SELECT d FROM Donacion d WHERE d.pnombre = :nombre")
     List<Donacion> findByPnombre(@Param("nombre") String nombre);
 
-    @Query("SELECT d FROM Donacion d WHERE d.appaterno_dona = :apellido")
+    @Query("SELECT d FROM Donacion d WHERE d.appaterno = :apellido")
     List<Donacion> findByAppaterno(@Param("apellido") String apellido);
 
 }

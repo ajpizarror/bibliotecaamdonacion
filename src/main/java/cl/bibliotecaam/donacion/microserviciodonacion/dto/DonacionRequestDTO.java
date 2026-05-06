@@ -25,6 +25,6 @@ public class DonacionRequestDTO {
     private String apmaterno;
 
     @NotNull(message = "La donacion tuvo que ser supervisada por un empleado.")
-    private Long id;
+    private Long empleadoId;
 
 }

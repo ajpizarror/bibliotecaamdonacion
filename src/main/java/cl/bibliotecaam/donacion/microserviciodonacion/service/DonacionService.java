@@ -45,8 +45,8 @@ public class DonacionService {
 
     public DonacionResponseDTO guardar(DonacionRequestDTO dto){
         Empleado empleado = empleadoRepository
-                .findById(dto.getId())
-                .orElseThrow(() -> new RuntimeException("Empleado no encontrado con el id: " + dto.getId()));
+                .findById(dto.getEmpleadoId())
+                .orElseThrow(() -> new RuntimeException("Empleado no encontrado con el id: " + dto.getEmpleadoId()));
         Donacion donacion = new Donacion(
                 null,
                 dto.getNumrun(),
@@ -64,9 +64,9 @@ public class DonacionService {
         return donacionRepository.findById(id).map( existente ->
         {
             Empleado empleado = empleadoRepository
-                    .findById(dto.getId())
+                    .findById(dto.getEmpleadoId())
                     .orElseThrow(()-> new RuntimeException(
-                            "Categoría no encontrada con id: " + dto.getId()));
+                            "Categoría no encontrada con id: " + dto.getEmpleadoId()));
             existente.setNumrun(dto.getNumrun());
             existente.setDv_run(dto.getDv_run());
             existente.setPnombre(dto.getPnombre());
