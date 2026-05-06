@@ -17,28 +17,28 @@ public class Empleado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_emp;
+    private Long idEmp;
 
     @Column(nullable = false,precision = 8)
-    private Long numrun_emp;
+    private Long numrunEmp;
 
     @Column(nullable = false, length = 1)
-    private String dvrun_emp;
+    private String dvrunEmp;
 
     @Column(nullable = false, length = 30)
-    private String pnombre_emp;
+    private String pnombreEmp;
 
     @Column(nullable = true, length = 30)
-    private String snombre_emp;
+    private String snombreEmp;
 
     @Column(nullable = false, length = 30)
-    private String appaterno_emp;
+    private String appaternoEmp;
 
     @Column(nullable = false, length = 30)
-    private String apmaterno_emp;
+    private String apmaternoEmp;
 
     @Column(nullable = false)
-    private LocalDate fec_contrato;
+    private LocalDate fecContrato;
 
     @Column(nullable = false, precision = 7)
     private Long sueldo;

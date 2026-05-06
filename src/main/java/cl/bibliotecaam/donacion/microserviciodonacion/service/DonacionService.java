@@ -22,14 +22,14 @@ public class DonacionService {
 
     private DonacionResponseDTO mapToDTO(Donacion donacion){
         return new DonacionResponseDTO(
-                donacion.getId_dona(),
-                donacion.getNumrun_dona(),
-                donacion.getDvrun_dona(),
-                donacion.getPnombre_dona(),
-                donacion.getSnombre_dona(),
-                donacion.getAppaterno_dona(),
-                donacion.getApmaterno_dona(),
-                donacion.getEmpleado().getNumrun_emp()
+                donacion.getIdDona(),
+                donacion.getNumrunDona(),
+                donacion.getDvrunDona(),
+                donacion.getPnombreDona(),
+                donacion.getSnombreDona(),
+                donacion.getAppaternoDona(),
+                donacion.getApmaternoDona(),
+                donacion.getEmpleado().getNumrunEmp()
         );
     }
 
@@ -45,16 +45,16 @@ public class DonacionService {
 
     public DonacionResponseDTO guardar(DonacionRequestDTO dto){
         Empleado empleado = empleadoRepository
-                .findById(dto.getId_emp())
-                .orElseThrow(() -> new RuntimeException("Empleado no encontrado con el id: " + dto.getId_emp()));
+                .findById(dto.getIdEmp())
+                .orElseThrow(() -> new RuntimeException("Empleado no encontrado con el id: " + dto.getIdEmp()));
         Donacion donacion = new Donacion(
                 null,
-                dto.getNumrun_dona(),
-                dto.getDvrun_dona(),
-                dto.getPnombre_dona(),
-                dto.getSnombre_dona(),
-                dto.getAppaterno_dona(),
-                dto.getApmaterno_dona(),
+                dto.getNumrunDona(),
+                dto.getDvrunDona(),
+                dto.getPnombreDona(),
+                dto.getSnombreDona(),
+                dto.getAppaternoDona(),
+                dto.getApmaternoDona(),
                 empleado
         );
         return mapToDTO(donacionRepository.save(donacion));
@@ -64,15 +64,15 @@ public class DonacionService {
         return donacionRepository.findById(id).map( existente ->
         {
             Empleado empleado = empleadoRepository
-                    .findById(dto.getId_emp())
+                    .findById(dto.getIdEmp())
                     .orElseThrow(()-> new RuntimeException(
-                            "Categoría no encontrada con id: " + dto.getId_emp()));
-            existente.setNumrun_dona(dto.getNumrun_dona());
-            existente.setDvrun_dona(dto.getDvrun_dona());
-            existente.setPnombre_dona(dto.getPnombre_dona());
-            existente.setSnombre_dona(dto.getSnombre_dona());
-            existente.setAppaterno_dona(dto.getAppaterno_dona());
-            existente.setApmaterno_dona(dto.getApmaterno_dona());
+                            "Categoría no encontrada con id: " + dto.getIdEmp()));
+            existente.setNumrunDona(dto.getNumrunDona());
+            existente.setDvrunDona(dto.getDvrunDona());
+            existente.setPnombreDona(dto.getPnombreDona());
+            existente.setSnombreDona(dto.getSnombreDona());
+            existente.setAppaternoDona(dto.getAppaternoDona());
+            existente.setApmaternoDona(dto.getApmaternoDona());
             existente.setEmpleado(empleado);
 
 
@@ -85,21 +85,21 @@ public class DonacionService {
     }
 
     public List<DonacionResponseDTO> obtenerPorNumrun(Long numrun){
-        return donacionRepository.findByNumrun_dona(numrun)
+        return donacionRepository.findByNumrunDona(numrun)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
 
     public List<DonacionResponseDTO> obtenerPorPnombre(String nombre){
-        return donacionRepository.findByPnombre_dona(nombre)
+        return donacionRepository.findByPnombreDona(nombre)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
     }
 
     public List<DonacionResponseDTO> obtenerPorAppaterno(String apellido){
-        return donacionRepository.findByAppaterno_dona(apellido)
+        return donacionRepository.findByAppaternoDona(apellido)
                 .stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());

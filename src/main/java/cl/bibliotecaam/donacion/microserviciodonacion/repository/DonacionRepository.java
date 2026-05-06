@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface DonacionRepository extends JpaRepository<Donacion, Long> {
 
-    List<Donacion> findByNumrun_dona(Long numrun);
+    List<Donacion> findByNumrunDona(Long numrun);
 
-    List<Donacion> findByPnombre_dona(String pnombre);
+    List<Donacion> findByPnombreDona(String pnombre);
 
-    List<Donacion> findByAppaterno_dona(String appaterno);
+    List<Donacion> findByAppaternoDona(String appaterno);
 
 }
