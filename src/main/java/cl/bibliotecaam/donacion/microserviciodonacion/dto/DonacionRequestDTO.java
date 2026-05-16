@@ -15,7 +15,7 @@ public class DonacionRequestDTO {
     private Long numrun;
 
     @NotBlank(message = "El DV es obligatorio.")
-    private String dv_run;
+    private String dvRun;
 
     @NotBlank(message = "El primer nombre es obligatorio.")
     private String pnombre;
