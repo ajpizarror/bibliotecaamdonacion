@@ -43,7 +43,7 @@ public class DonacionService {
     private void validarEmpleado(Long empleadoId) {
         try {
             webClient.get()
-                    .uri("/api//bibliotecaam/empleados/id/{id}", empleadoId)
+                    .uri("/api//bibliotecaam/empleado/{id}", empleadoId)
                     .retrieve()
                     .bodyToMono(String.class)
                     .block();
