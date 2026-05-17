@@ -27,7 +27,7 @@ public class DonacionService {
         return new DonacionResponseDTO(
                 donacion.getId(),
                 donacion.getNumrun(),
-                donacion.getDv_run(),
+                donacion.getDvRun(),
                 donacion.getPnombre(),
                 donacion.getSnombre(),
                 donacion.getAppaterno(),
@@ -76,7 +76,7 @@ public class DonacionService {
         Donacion donacion = new Donacion(
                 null,
                 dto.getNumrun(),
-                dto.getDv_run(),
+                dto.getDvRun(),
                 dto.getPnombre(),
                 dto.getSnombre(),
                 dto.getAppaterno(),
@@ -91,7 +91,7 @@ public class DonacionService {
         {
             validarEmpleado(dto.getIdEmpleado());
             existente.setNumrun(dto.getNumrun());
-            existente.setDv_run(dto.getDv_run());
+            existente.setDvRun(dto.getDvRun());
             existente.setPnombre(dto.getPnombre());
             existente.setSnombre(dto.getSnombre());
             existente.setAppaterno(dto.getAppaterno());
