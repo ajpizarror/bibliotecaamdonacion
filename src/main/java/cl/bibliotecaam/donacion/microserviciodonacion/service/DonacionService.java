@@ -44,7 +44,7 @@ public class DonacionService {
         try {
             webClient.get()
                     .uri("/api/bibliotecaam/empleado/{id}", empleadoId)
-                    .header("Authorization", "Bearer" + token)
+                    .header("Authorization", token)
                     .retrieve()
                     .bodyToMono(String.class)
                     .block();
