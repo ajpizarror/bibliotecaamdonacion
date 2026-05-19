@@ -40,10 +40,11 @@ public class DonacionService {
     /*
     -------------------------VALIDANDO EL ID EMPLEADO -----------------------
      */
-    private void validarEmpleado(Long empleadoId) {
+    private void validarEmpleado(Long empleadoId, String token) {
         try {
             webClient.get()
                     .uri("/api/bibliotecaam/empleado/{id}", empleadoId)
+                    .header("Authorization", "Bearer" + token)
                     .retrieve()
                     .bodyToMono(String.class)
                     .block();
@@ -71,8 +72,8 @@ public class DonacionService {
                 .map(this::mapToDTO);
     }
 
-    public DonacionResponseDTO guardar(DonacionRequestDTO dto){
-        validarEmpleado(dto.getIdEmpleado());
+    public DonacionResponseDTO guardar(DonacionRequestDTO dto, String token){
+        validarEmpleado(dto.getIdEmpleado(),token);
         Donacion donacion = new Donacion(
                 null,
                 dto.getNumrun(),
@@ -86,10 +87,10 @@ public class DonacionService {
         return mapToDTO(donacionRepository.save(donacion));
     }
 
-    public Optional<DonacionResponseDTO> actualizar(Long id, DonacionRequestDTO dto){
+    public Optional<DonacionResponseDTO> actualizar(Long id, DonacionRequestDTO dto, String token){
         return donacionRepository.findById(id).map( existente ->
         {
-            validarEmpleado(dto.getIdEmpleado());
+            validarEmpleado(dto.getIdEmpleado(), token);
             existente.setNumrun(dto.getNumrun());
             existente.setDvRun(dto.getDvRun());
             existente.setPnombre(dto.getPnombre());

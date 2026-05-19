@@ -43,13 +43,13 @@ public class DonacionController {
     }
 
     @PostMapping
-    public ResponseEntity<DonacionResponseDTO> guardar(@Valid @RequestBody DonacionRequestDTO dto){
-        return ResponseEntity.status(201).body(donacionService.guardar(dto));
+    public ResponseEntity<DonacionResponseDTO> guardar(@Valid @RequestBody DonacionRequestDTO dto, @RequestHeader("Authorization") String token){
+        return ResponseEntity.status(201).body(donacionService.guardar(dto,token));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DonacionResponseDTO> actualizar(@PathVariable Long id, @Valid @RequestBody DonacionRequestDTO dto){
-        return donacionService.actualizar(id, dto).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<DonacionResponseDTO> actualizar(@PathVariable Long id, @Valid @RequestBody DonacionRequestDTO dto, @RequestHeader("Authorization") String token){
+        return donacionService.actualizar(id, dto, token).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
