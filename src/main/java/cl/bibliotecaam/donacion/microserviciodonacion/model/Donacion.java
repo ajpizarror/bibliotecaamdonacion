@@ -24,7 +24,7 @@ public class Donacion {
     private String snombre;
     @Column(nullable = false,length = 30, unique = false)
     private String appaterno;
-    @Column(nullable = true,length = 30, unique = false)
+    @Column(nullable = false,length = 30, unique = false)
     private String apmaterno;
 
     @Column(nullable = false)
