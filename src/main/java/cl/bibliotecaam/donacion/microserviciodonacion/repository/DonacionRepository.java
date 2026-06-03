@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface DonacionRepository extends JpaRepository<Donacion, Long> {
-    @Query("SELECT d FROM Donacion d WHERE UPPER(d.numrun) LIKE UPPER(CONCAT('%', :numrun, '%'))")
+    @Query("SELECT d FROM Donacion d WHERE d.numrun = :numrun")
     List<Donacion> findByNumrun(@Param("numrun") Long numrun);
 
     @Query("SELECT d FROM Donacion d WHERE UPPER(d.pnombre) LIKE UPPER(CONCAT('%',:nombre,'%'))")
