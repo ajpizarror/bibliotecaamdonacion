@@ -2,6 +2,7 @@ package cl.bibliotecaam.donacion.microserviciodonacion;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /*
 --------------------------------------- AVISO DE UTILIDAD -------------------------------------------
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 * * * * * COMPRUEBA PRIMERO QUE EL MICRO SERVICIO DE EMPLEADOS ESTE INICIALIZADO ANTES DE LEVANTAR ESTE.
  */
 @SpringBootApplication
+@EnableDiscoveryClient
 public class MicroserviciodonacionApplication {
 
 	public static void main(String[] args) {
