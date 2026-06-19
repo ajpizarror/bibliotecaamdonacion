@@ -67,7 +67,6 @@ public class DonacionServiceTest {
 
     @Test
     public void testGuardar() {
-        // 1. Preparamos el DTO de entrada con datos válidos
         DonacionRequestDTO requestDTO = new DonacionRequestDTO();
         requestDTO.setNumrun(12345678L);
         requestDTO.setDvRun("K");
@@ -77,17 +76,13 @@ public class DonacionServiceTest {
         requestDTO.setApmaterno("Gómez");
         requestDTO.setIdEmpleado(99L);
 
-        // 2. Simulamos que el WebClient responde exitosamente al validar el empleado
         simularWebClientExitoso(webClient);
 
-        // 3. Simulamos la persistencia en base de datos
         Donacion donacionGuardada = new Donacion(1L, 12345678L, "K", "Juan", "Carlos", "Pérez", "Gómez", 99L);
         when(donacionRepository.save(any(Donacion.class))).thenReturn(donacionGuardada);
 
-        // 4. Ejecutamos
         DonacionResponseDTO resultado = donacionService.guardar(requestDTO, tokenFalso);
 
-        // 5. Validamos
         assertNotNull(resultado);
         assertEquals(1L, resultado.getId());
         assertEquals(99L, resultado.getIdEmpleado());
@@ -162,7 +157,6 @@ public class DonacionServiceTest {
         assertEquals("Pérez", resultado.get(0).getAppaterno());
     }
 
-    // --- MÉTODOS AUXILIARES ---
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     private void simularWebClientExitoso(WebClient webClientMock) {
